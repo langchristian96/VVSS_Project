@@ -1,11 +1,11 @@
-package controller;
-
-import repository.MemberRepository;
-
-import model.Member;
-import model.Entry;
+package ro.ubb.vvss.controller;
 
 
+
+
+import ro.ubb.vvss.model.Entry;
+import ro.ubb.vvss.model.Member;
+import ro.ubb.vvss.repository.MemberRepository;
 
 import java.io.IOException;
 import java.text.ParseException;

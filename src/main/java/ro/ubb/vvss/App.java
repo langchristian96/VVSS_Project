@@ -1,9 +1,10 @@
+package ro.ubb.vvss;
 
+import ro.ubb.vvss.controller.MemberController;
+import ro.ubb.vvss.repository.MemberRepository;
+import ro.ubb.vvss.ui.MemberUI;
 
 import java.io.BufferedWriter;
-import repository.MemberRepository;
-import controller.MemberController;
-import ui.MemberUI;;
 
 public class App {
 	public static void main(String[] args) {

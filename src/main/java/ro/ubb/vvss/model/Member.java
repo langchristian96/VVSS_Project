@@ -1,4 +1,4 @@
-package model;
+package ro.ubb.vvss.model;
 
 public class Member {
 	private String name;

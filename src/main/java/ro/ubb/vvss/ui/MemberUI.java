@@ -1,12 +1,13 @@
-package ui;
+package ro.ubb.vvss.ui;
+
+import ro.ubb.vvss.controller.MemberController;
+import ro.ubb.vvss.model.Entry;
+import ro.ubb.vvss.model.Member;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
-import model.*;
-import controller.MemberController;;
 
 public class MemberUI {
 	public MemberController ctrl;
@@ -86,7 +87,7 @@ public class MemberUI {
 				String idS = in.nextLine();
 				int idInt=Integer.parseInt(idS);
 				
-				Entry e= new Entry(type, valueInt, idInt);			
+				Entry e= new Entry(type, valueInt, idInt);
 				ctrl.addEntry(e);
 			    
 			}

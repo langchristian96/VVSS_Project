@@ -1,8 +1,10 @@
-package repository;
+package ro.ubb.vvss.repository;
+
+import ro.ubb.vvss.model.Entry;
+import ro.ubb.vvss.model.Member;
 
 import java.io.BufferedReader;
 
-import model.*;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,9 +17,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import exceptions.InvalidBudgetException;
-import exceptions.InvalidNameException;
-import exceptions.InvalidTypeException;
 
 public class MemberRepository {
 	private List<Member> members = new ArrayList<Member>();
