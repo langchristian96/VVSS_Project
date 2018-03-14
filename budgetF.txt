@@ -8,3 +8,6 @@ cost;10;2
 cost;10;100
 cost;10;3
 income;23;23
+income;123;-1
+income;123;-1
+qwe;123;-1
