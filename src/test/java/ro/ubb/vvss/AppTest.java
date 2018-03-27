@@ -32,6 +32,9 @@ public class AppTest extends TestCase {
         controller.addEntry(entry);
         assertEquals(controller.allEntries().size(), size+1);
     }
+    public void test_tc_3_empty() {
+        
+    }
 
     public AppTest( String testName )
     {
