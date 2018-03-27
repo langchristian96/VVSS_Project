@@ -15,7 +15,7 @@ public class AppTest extends TestCase {
     private MemberRepository repository;
     private MemberController controller;
 
-    public void test_tc_1_addEntryNegativeId() {
+    public void test_tc_1_addEntryNegativeIdd() {
         repository = new MemberRepository();
         controller = new MemberController(repository);
         Entry entry = new Entry("income",123,-1);
@@ -24,7 +24,7 @@ public class AppTest extends TestCase {
         assertEquals(controller.allEntries().size(), size+1);
     }
 
-    public void test_tc_2_addRandomTypeEntry() {
+    public void test_tc_2_addRandomTypeEntryy() {
         repository = new MemberRepository();
         controller = new MemberController(repository);
         Entry entry = new Entry("qwe",123,-1);
