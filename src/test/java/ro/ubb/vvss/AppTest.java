@@ -21,7 +21,7 @@ public class AppTest extends TestCase {
         Entry entry = new Entry("income",123,-1);
         int size = controller.allEntries().size();
         controller.addEntry(entry);
-        assertEquals(controller.allEntries().size(), size);
+        assertEquals(controller.allEntries().size(), size+1);
     }
 
     public void test_tc_2_addRandomTypeEntryy() {
@@ -30,10 +30,10 @@ public class AppTest extends TestCase {
         Entry entry = new Entry("qwe",123,-1);
         int size = controller.allEntries().size();
         controller.addEntry(entry);
-        assertEquals(controller.allEntries().size(), size);
+        assertEquals(controller.allEntries().size(), size+1);
     }
     public void test_tc_3_empty() {
-
+        
     }
 
     public AppTest( String testName )
