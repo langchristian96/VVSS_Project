@@ -11,3 +11,17 @@ income;23;23
 income;123;-1
 income;123;-1
 qwe;123;-1
+income;1;1
+income;1;1
+income;1;1
+cost;13;1
+cost;13;1
+cost;13;1
+cost;1;1
+cost;1;13
+income;1;13
+cost;13;1
+cost;1;1
+income;1;1
+cost;1;13
+income;1;13

@@ -1,6 +1,8 @@
 package ro.ubb.vvss.ui;
 
 import ro.ubb.vvss.controller.MemberController;
+import ro.ubb.vvss.exceptions.InvalidBudgetException;
+import ro.ubb.vvss.exceptions.InvalidNameException;
 import ro.ubb.vvss.model.Entry;
 import ro.ubb.vvss.model.Member;
 
@@ -52,8 +54,7 @@ public class MemberUI {
 	}
 	
 	
-	public void Run()
-	{
+	public void Run() throws InvalidNameException, InvalidBudgetException {
 		printMenu();
 	
 		
