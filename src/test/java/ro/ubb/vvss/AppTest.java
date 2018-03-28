@@ -180,34 +180,34 @@ public class AppTest extends TestCase {
 
 
 
-//    public void test_tc_1_addEntryNegativeIdd() throws InvalidBudgetException {
-//        try {
-//            repository = new MemberRepository();
-//            controller = new MemberController(repository);
-//            Entry entry = new Entry("income", 123, -1);
-//            int size = controller.allEntries().size();
-//            controller.addEntry(entry);
-//            assertEquals(controller.allEntries().size(), size + 1);
-//            fail();
-//        }
-//        catch(RuntimeException e) {
-//
-//        }
-//    }
-//
-//    public void test_tc_2_addRandomTypeEntryy() throws InvalidBudgetException {
-//        try {
-//            repository = new MemberRepository();
-//            controller = new MemberController(repository);
-//            Entry entry = new Entry("qwe", 123, -1);
-//            int size = controller.allEntries().size();
-//            controller.addEntry(entry);
-//            fail();
-//        }
-//        catch(InvalidBudgetException e) {
-//
-//        }
-//    }
+    public void test_tc_1_addEntryNegativeIdd() throws InvalidBudgetException {
+        try {
+            repository = new MemberRepository();
+            controller = new MemberController(repository);
+            Entry entry = new Entry("income", 123, -1);
+            int size = controller.allEntries().size();
+            controller.addEntry(entry);
+            assertEquals(controller.allEntries().size(), size + 1);
+            fail();
+        }
+        catch(RuntimeException e) {
+
+        }
+    }
+
+    public void test_tc_2_addRandomTypeEntryy() throws InvalidBudgetException {
+        try {
+            repository = new MemberRepository();
+            controller = new MemberController(repository);
+            Entry entry = new Entry("qwe", 123, -1);
+            int size = controller.allEntries().size();
+            controller.addEntry(entry);
+            fail();
+        }
+        catch(InvalidBudgetException e) {
+
+        }
+    }
 //
 //    public void test_tc_3_addMemberNegativeId() {
 //        try {
