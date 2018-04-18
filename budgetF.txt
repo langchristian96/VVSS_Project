@@ -40,3 +40,5 @@ income;12;11
 income;12;11
 cost;12;11
 income;12;11
+income;12;11
+cost;12;11

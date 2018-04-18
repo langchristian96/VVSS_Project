@@ -29,7 +29,7 @@ public class IntegrationTest extends TestCase {
 
     //first test for c)
     public void test_tc1_getEntriesForMember() {
-        this.memberRepository = new MemberRepository("C:\\work\\ssvv\\VVSS\\membersF.txt", "bla.txt");  //empty bla.txt => zero entries
+        this.memberRepository = new MemberRepository("membersF.txt", "bla.txt");  //empty bla.txt => zero entries
         this.memberController = new MemberController(memberRepository);
         List<Entry> entries = memberController.entriesForMember(1);
         assertEquals(entries.size(), 0);
@@ -57,7 +57,7 @@ public class IntegrationTest extends TestCase {
 
     //final test
     public void test_tc4_final() throws InvalidNameException, InvalidBudgetException {
-        this.memberRepository = new MemberRepository("C:\\work\\ssvv\\VVSS\\membersF.txt", "bla.txt");  //empty bla.txt => zero entries
+        this.memberRepository = new MemberRepository("membersF.txt", "bla.txt");  //empty bla.txt => zero entries
         this.memberController = new MemberController(memberRepository);
 
         int size = memberRepository.getAllMembers().size();
