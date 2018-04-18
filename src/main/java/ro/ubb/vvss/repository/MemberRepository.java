@@ -25,8 +25,7 @@ public class MemberRepository {
 	private static String filenameMember = "membersF.txt";
 	private static String filenameBudget = "budgetF.txt";
 
-	@SuppressWarnings("resource")
-	MemberRepository(String filenameMember, String filenameBudget) {
+	public MemberRepository(String filenameMember, String filenameBudget) {
 		MemberRepository.filenameBudget = filenameBudget;
 		MemberRepository.filenameMember = filenameMember;
 		init();

@@ -59,4 +59,8 @@ public class MemberController {
         }
         return this.mr.getAllEntries().stream().filter(m-> m.getIdMember()==id).collect(Collectors.toList());
     }
+
+    public List<Member> getMembers() {
+        return mr.getAllMembers();
+    }
 } 
