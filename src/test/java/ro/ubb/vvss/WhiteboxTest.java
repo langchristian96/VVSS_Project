@@ -19,7 +19,7 @@ public class WhiteboxTest extends TestCase {
     private MemberController controller;
 
 
-    public void test_tc_1_addEntryValid() throws InvalidBudgetException {
+    public void test_tc_1_addEntryValid_income() throws InvalidBudgetException {
 
         repository = new MemberRepository();
         controller = new MemberController(repository);
@@ -29,13 +29,59 @@ public class WhiteboxTest extends TestCase {
         assertEquals(controller.allEntries().size(), size+1);
     }
 
-    public void test_tc_2_addEntryNegativeId() throws InvalidBudgetException {
+    public void test_tc_2_addEntryWrongType() throws InvalidBudgetException {
         int size=0;
 
         try {
             repository = new MemberRepository();
             controller = new MemberController(repository);
-            Entry entry = new Entry("qwe", 1, -1);
+            Entry entry = new Entry("qwe", 1, 1);
+            size = controller.allEntries().size();
+            controller.addEntry(entry);
+            fail("Exception should have been thrown");
+        }
+        catch(InvalidBudgetException e) {
+
+            assertEquals(controller.allEntries().size(), size);
+        }
+    }
+
+
+    public void test_tc_3_addEntryNegativeId() throws InvalidBudgetException {
+        int size=0;
+
+        try {
+            repository = new MemberRepository();
+            controller = new MemberController(repository);
+            Entry entry = new Entry("cost", 1, -1);
+            size = controller.allEntries().size();
+            controller.addEntry(entry);
+            fail("Exception should have been thrown");
+        }
+        catch(RuntimeException e) {
+
+            assertEquals(controller.allEntries().size(), size);
+        }
+    }
+
+    public void test_tc_4_addEntryValid_cost() throws InvalidBudgetException {
+
+        repository = new MemberRepository();
+        controller = new MemberController(repository);
+        Entry entry = new Entry("cost", 12, 11);
+        int size = controller.allEntries().size();
+        controller.addEntry(entry);
+        assertEquals(controller.allEntries().size(), size+1);
+    }
+
+
+    public void test_tc_5_addEntryNegativeValue() throws InvalidBudgetException {
+        int size=0;
+
+        try {
+            repository = new MemberRepository();
+            controller = new MemberController(repository);
+            Entry entry = new Entry("cost", -1, 1);
             size = controller.allEntries().size();
             controller.addEntry(entry);
             fail("Exception should have been thrown");

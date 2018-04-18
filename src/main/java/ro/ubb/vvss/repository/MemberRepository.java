@@ -22,49 +22,58 @@ public class MemberRepository {
 	private List<Member> members = new ArrayList<Member>();
 	private List<Entry> entries = new ArrayList<Entry>();
 
-	private final static String filenameMember = "membersF.txt";
-	private final static String filenameBudget = "budgetF.txt";
+	private static String filenameMember = "membersF.txt";
+	private static String filenameBudget = "budgetF.txt";
 
 	@SuppressWarnings("resource")
-	public MemberRepository() {
-		
-	try{
-		FileReader fileReader = null;
-		BufferedReader bufferedReader = null;
-		String currentLine = null;
-
-		fileReader = new FileReader(filenameMember);
-		bufferedReader = new BufferedReader(fileReader);
-		
-		while ((currentLine = bufferedReader.readLine()) != null) {
-			String line[] = currentLine.split(";");
-			Member m = new Member(line[0], line[1]);
-			this.members.add(m);			
-		}
-	 }catch(Exception ex){
-         System.err.println(ex.getMessage());
-     }
-	try{
-		FileReader fileReaderEntry = null;
-		BufferedReader bufferedReaderEntry = null;
-		String currentLineEntry = null;
-
-		fileReaderEntry = new FileReader(filenameBudget);
-		bufferedReaderEntry = new BufferedReader(fileReaderEntry);
-		
-		while ((currentLineEntry = bufferedReaderEntry.readLine()) != null) {
-			String line[] = currentLineEntry.split(";");
-			int valueEntry = Integer.parseInt(line[1]);
-			int idEntryMember = Integer.parseInt(line[2]);
-			Entry e = new Entry(line[0],valueEntry,idEntryMember);
-			this.entries.add(e);			
-		}
-	 }catch(Exception ex){
-         System.err.println(ex.getMessage());
-     }
+	MemberRepository(String filenameMember, String filenameBudget) {
+		MemberRepository.filenameBudget = filenameBudget;
+		MemberRepository.filenameMember = filenameMember;
+		init();
 	}
 
-	 public void addMember(Member m){
+	public MemberRepository() {
+		init();
+	}
+
+	private void init() {
+		try{
+            FileReader fileReader = null;
+            BufferedReader bufferedReader = null;
+            String currentLine = null;
+
+            fileReader = new FileReader(filenameMember);
+            bufferedReader = new BufferedReader(fileReader);
+
+            while ((currentLine = bufferedReader.readLine()) != null) {
+                String line[] = currentLine.split(";");
+                Member m = new Member(line[0], line[1]);
+                this.members.add(m);
+            }
+         }catch(Exception ex){
+             System.err.println(ex.getMessage());
+         }
+		try{
+            FileReader fileReaderEntry = null;
+            BufferedReader bufferedReaderEntry = null;
+            String currentLineEntry = null;
+
+            fileReaderEntry = new FileReader(filenameBudget);
+            bufferedReaderEntry = new BufferedReader(fileReaderEntry);
+
+            while ((currentLineEntry = bufferedReaderEntry.readLine()) != null) {
+                String line[] = currentLineEntry.split(";");
+                int valueEntry = Integer.parseInt(line[1]);
+                int idEntryMember = Integer.parseInt(line[2]);
+                Entry e = new Entry(line[0],valueEntry,idEntryMember);
+                this.entries.add(e);
+            }
+         }catch(Exception ex){
+             System.err.println(ex.getMessage());
+         }
+	}
+
+	public void addMember(Member m){
 		 members.add(m);
 		 try {
 			 FileWriter fw = new FileWriter(filenameMember,true);
@@ -89,5 +98,9 @@ public class MemberRepository {
 	 public List<Entry> getAllEntries(){
 		 
 		 return entries;
+	 }
+
+	 public List<Member> getAllMembers() {
+	 	return this.members;
 	 }
 }
