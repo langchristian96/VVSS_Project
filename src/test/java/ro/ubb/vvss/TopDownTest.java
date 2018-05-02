@@ -12,71 +12,69 @@ import ro.ubb.vvss.repository.MemberRepository;
 
 import java.util.List;
 
-import static org.junit.Assert.assertThat;
-
 /**
- * Created by langchristian96 on 4/18/2018.
+ * Created by langchristian96 on 5/2/2018.
  */
-public class IntegrationTest extends TestCase {
+public class TopDownTest extends TestCase {
+
 
     private MemberRepository memberRepository;
     private MemberController memberController;
 
-    public IntegrationTest( String testName )
+    public TopDownTest( String testName )
     {
         super( testName );
     }
 
-    //first test for c)
-    public void test_tc1_getEntriesForMember() {
-        this.memberRepository = new MemberRepository("membersF.txt", "bla.txt");  //empty bla.txt => zero entries
-        this.memberController = new MemberController(memberRepository);
-        List<Entry> entries = memberController.entriesForMember(1);
-        assertEquals(entries.size(), 0);
+    public static Test suite()
+    {
+        return new TestSuite( TopDownTest.class );
     }
 
     //a)
-    public void test_tc2_addMember() throws InvalidNameException {
+    public void test_tc1_addMember() throws InvalidNameException {
         memberRepository = new MemberRepository();
         memberController = new MemberController(memberRepository);
         int size = memberRepository.getAllMembers().size();
-        Member member = new Member("bla", "111");
+        Member member = new Member("name", "114");
         memberController.addMember(member);
         assertEquals(memberRepository.getAllMembers().size(), size+1);
     }
 
-    //b)
-    public void test_tc3_addEntry() throws InvalidBudgetException {
-        memberRepository = new MemberRepository();
-        memberController = new MemberController(memberRepository);
-        Entry entry = new Entry("income", 12, 11);
-        int size = memberController.allEntries().size();
+    //a) and b)
+    public void test_tc2_integrationTestB() throws InvalidNameException, InvalidBudgetException {
+        this.memberRepository = new MemberRepository("membersF.txt", "bla.txt");  //empty bla.txt => zero entries
+        this.memberController = new MemberController(memberRepository);
+
+        int size = memberRepository.getAllMembers().size();
+        Member member = new Member("name", "114");
+        memberController.addMember(member);
+        assertEquals(memberRepository.getAllMembers().size(), size+1);
+
+
+        Entry entry = new Entry("income", 12, 114);
+        size = memberController.allEntries().size();
         memberController.addEntry(entry);
         assertEquals(memberController.allEntries().size(), size+1);
     }
 
-    //final test
-    public void test_tc4_final() throws InvalidNameException, InvalidBudgetException {
+    //a) and b) and c)
+    public void test_tc3_integrationTestC() throws InvalidNameException, InvalidBudgetException {
         this.memberRepository = new MemberRepository("membersF.txt", "bla.txt");  //empty bla.txt => zero entries
         this.memberController = new MemberController(memberRepository);
 
         int size = memberRepository.getAllMembers().size();
-        Member member = new Member("blaa", "112");
+        Member member = new Member("name", "114");
         memberController.addMember(member);
         assertEquals(memberRepository.getAllMembers().size(), size+1);
 
 
-        Entry entry = new Entry("income", 12, 112);
+        Entry entry = new Entry("income", 12, 114);
         size = memberController.allEntries().size();
         memberController.addEntry(entry);
         assertEquals(memberController.allEntries().size(), size+1);
 
-        List<Entry> entries = memberController.entriesForMember(112);
+        List<Entry> entries = memberController.entriesForMember(114);
         assertTrue(entries.contains(entry));
-    }
-
-    public static Test suite()
-    {
-        return new TestSuite( IntegrationTest.class );
     }
 }
